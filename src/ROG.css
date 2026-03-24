@@ -1,0 +1,1344 @@
+/* ROG-Inspired Premium Desktop UI - Dark Mode & Scaled Down */
+
+:root {
+    /* Base Colors - Dark Theme */
+    --rog-bg-light: #050505;
+    /* Deep Black */
+    --rog-bg-gradient-start: #0a0a0a;
+    --rog-bg-gradient-end: #000000;
+    --rog-panel-white: rgba(20, 20, 20, 0.95);
+    /* Dark Panel */
+    --rog-panel-border: rgba(255, 255, 255, 0.08);
+
+    /* Accents */
+    --rog-red: #ff0a3e;
+    --rog-red-glow: rgba(255, 10, 62, 0.15);
+    /* Reduced glow intensity */
+    --rog-border: rgba(255, 255, 255, 0.08);
+
+    /* Text */
+    --rog-text-dark: #e5e5e5;
+    /* Off-white for main text */
+    --rog-text-light: #ffffff;
+    --rog-text-dim: #9ca3af;
+    /* Gray for subtitles */
+
+    /* Shadows for Depth (Adjusted for Dark Mode) */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.6);
+    --shadow-red: 0 5px 15px rgba(255, 10, 62, 0.2);
+
+    /* Spacing Variables - Scaled Up for Zoom */
+    --nav-height: 80px;
+    /* Increased back from 64px */
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* Reset to standard base size for better default scaling */
+}
+
+/* === BODY & CONTAINER === */
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rog-red) var(--rog-bg-light);
+}
+
+/* Webkit Scrollbar Fallbacks */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--rog-bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rog-red);
+    border-radius: 3px;
+}
+
+body {
+    font-family: 'Inter', 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--rog-text-dark);
+    position: relative;
+    background: #000000;
+    display: block;
+    /* Ultra-Premium Background: Grid + Vignette + Deep Red Glow */
+    background-color: #050505;
+    background-image:
+        linear-gradient(rgba(255, 10, 62, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 10, 62, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(20, 0, 5, 0) 0%, #000000 100%);
+    /* Vignette */
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    background-position: center center;
+    min-height: 100vh;
+}
+
+/* Subtle Floating Particles/Glows (Cinematic Lighting) */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(255, 10, 62, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -20%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(255, 10, 62, 0.05) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main content wrapper */
+#root {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Layout Utilities --- */
+.rog-container-wide {
+    width: 100%;
+    margin: 0;
+    padding: 0 24px;
+    /* Minimal padding for edge breathing room */
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.rog-section {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* --- Navigation Bar (Fixed & Full Width) --- */
+header,
+.rog-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(10, 10, 10, 0.95);
+    /* Dark Navbar */
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rog-border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    /* Match container padding */
+    box-sizing: border-box;
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- Components --- */
+
+/* Buttons */
+.rog-btn-primary {
+    position: relative;
+    padding: 14px 32px;
+    /* Increased padding */
+    background: linear-gradient(135deg, var(--rog-red) 0%, #aa0020 100%);
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    /* Increased font size */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-red);
+    white-space: nowrap;
+}
+
+.rog-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 10, 62, 0.3);
+    background: linear-gradient(135deg, #ff2a55 0%, #cc002a 100%);
+}
+
+.rog-btn-secondary {
+    padding: 10px 24px;
+    /* Increased padding */
+    background: transparent;
+    border: 1px solid var(--rog-red);
+    color: var(--rog-red);
+    font-size: 1rem;
+    /* Increased font size */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    transition: all 0.2s;
+}
+
+.rog-btn-secondary:hover {
+    background: rgba(255, 10, 62, 0.1);
+    box-shadow: 0 0 10px rgba(255, 10, 62, 0.2);
+    transform: translateY(-1px);
+    text-shadow: 0 0 5px rgba(255, 10, 62, 0.5);
+}
+
+/* Panels with Dark Technical Look */
+.rog-panel-dark {
+    background: var(--rog-panel-white);
+    border: 1px solid var(--rog-panel-border);
+    border-left: 3px solid var(--rog-red);
+    padding: 32px;
+    /* Increased padding */
+    position: relative;
+    box-shadow: var(--shadow-md);
+    border-radius: 4px;
+    /* Slightly more rounded */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rog-panel-dark:hover {
+    border-color: rgba(255, 10, 62, 0.5);
+    /* Stronger Red Border */
+    box-shadow: 0 0 25px rgba(255, 10, 62, 0.25);
+    /* Enhanced Red Glow */
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Inputs */
+.rog-input-dark,
+.rog-select-dark {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    color: white;
+    padding: 14px 18px;
+    /* Increased padding */
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    /* Increased font size */
+    transition: all 0.2s;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.rog-input-dark:focus,
+.rog-select-dark:focus {
+    border-color: var(--rog-red);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 10, 62, 0.2);
+    background: #111;
+}
+
+/* Stats Blocks */
+.rog-stat-block {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid var(--rog-border);
+    padding: 20px;
+    /* Reduced padding */
+    text-align: center;
+    position: relative;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+    border-radius: 4px;
+}
+
+.rog-stat-block:hover {
+    transform: translateY(-3px);
+    border-color: var(--rog-red);
+    box-shadow: 0 5px 15px rgba(255, 10, 62, 0.1);
+}
+
+.rog-stat-number {
+    font-size: 3.5rem;
+    /* Increased from 2.5rem */
+    font-weight: 800;
+    color: var(--rog-text-dark);
+    /* White number */
+    line-height: 1;
+    margin-bottom: 8px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.rog-stat-label {
+    font-size: 0.9rem;
+    /* Increased from 0.75rem */
+    color: var(--rog-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* Responsive Stats Grid */
+.rog-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+    .rog-stats-grid {
+        grid-template-columns: 1fr;
+        /* Stack stats on mobile */
+        gap: 16px;
+    }
+}
+
+/* Hero Typography - Scaled Down */
+.rog-hero-section {
+    padding: 100px 40px 60px;
+    /* Increased padding */
+    text-align: left;
+    /* Default to left align for dashboard */
+}
+
+@media (max-width: 768px) {
+    .rog-hero-section {
+        padding: 80px 24px 40px;
+    }
+}
+
+.rog-hero-title {
+    font-size: 4.5rem;
+    /* Increased from 3rem */
+    font-weight: 900;
+    color: var(--rog-text-dark);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}
+
+.rog-hero-subtitle {
+    font-size: 1.25rem;
+    /* Increased from 1rem */
+    color: var(--rog-text-dim);
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* Inventory Cards */
+.rog-inventory-card {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid var(--rog-border);
+    border-radius: 4px;
+    padding: 16px;
+    /* Reduced padding */
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.rog-inventory-card:hover {
+    background: rgba(30, 30, 30, 0.8);
+    border-color: var(--rog-red);
+    transform: translateY(-3px);
+}
+
+.rog-blood-type {
+    font-size: 1.5rem;
+    /* Reduced from 2rem */
+    font-weight: 800;
+    color: var(--rog-text-dark);
+    margin-bottom: 8px;
+}
+
+.rog-progress-container {
+    background: #222;
+    height: 4px;
+    /* Thinner bar */
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.rog-progress-bar {
+    height: 100%;
+    background: var(--rog-red);
+    box-shadow: 0 0 8px rgba(255, 10, 62, 0.5);
+}
+
+/* Request List */
+.rog-request-item {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid var(--rog-border);
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.rog-request-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(30, 30, 30, 0.6);
+}
+
+.rog-status-badge {
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rog-status-badge.pending {
+    background: rgba(234, 179, 8, 0.1);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.rog-status-badge.approved {
+    background: rgba(22, 163, 74, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.rog-status-badge.rejected {
+    background: rgba(220, 38, 38, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* Toast Notification (Dark) */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid #333;
+    border-left: 3px solid #333;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    min-width: 280px;
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.toast.hiding {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+.toast.success {
+    border-left-color: #10b981;
+}
+
+.toast.error {
+    border-left-color: #ef4444;
+}
+
+.toast.warning {
+    border-left-color: #f59e0b;
+}
+
+.toast-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.toast-message {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Helper Utility */
+.rog-glow-text-dark {
+    color: var(--rog-text-dark);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Dashboard Grid Layout (User) */
+.rog-dashboard-layout {
+    display: grid;
+    grid-template-columns: minmax(350px, 1fr) minmax(450px, 1.5fr);
+    gap: 3rem;
+    /* Reduced gap */
+    align-items: start;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.rog-dashboard-right-panel {
+    display: grid;
+    gap: 24px;
+    padding-left: 24px;
+}
+
+@media (max-width: 1200px) {
+    .rog-dashboard-layout {
+        grid-template-columns: 1fr;
+        /* Stack on smaller screens / high zoom */
+        gap: 2rem;
+    }
+
+    .rog-dashboard-right-panel {
+        padding-left: 0 !important;
+        /* Remove left padding when stacked */
+    }
+}
+
+/* Dashboard Grid Layout (Admin/General) */
+.rog-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    /* Fluid gap */
+    width: 100%;
+}
+
+/* Admin Horizontal Stack Layout */
+.rog-dashboard-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.rog-inventory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rog-inventory-list .rog-inventory-card {
+    display: grid;
+    grid-template-columns: 150px 80px 1fr 100px;
+    /* Horizontal row layout with hospital name */
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 0;
+    text-align: left;
+    padding: 20px 32px;
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid var(--rog-border);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.rog-inventory-list .rog-inventory-card:hover {
+    background: rgba(30, 30, 30, 0.8);
+    border-color: var(--rog-red);
+    transform: translateX(4px);
+    /* Slight shift right instead of up */
+}
+
+.rog-inventory-list .rog-blood-type {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--rog-red);
+    text-shadow: 0 0 10px rgba(255, 10, 62, 0.4);
+}
+
+.rog-requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* === NEW UI ENHANCEMENTS === */
+
+/* Blood Rain Animation */
+.blood-rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.drop {
+    position: absolute;
+    top: -20px;
+    width: 4px;
+    /* Increased from 2px */
+    height: 30px;
+    /* Increased from 15px */
+    background: linear-gradient(to bottom, transparent, rgba(255, 10, 62, 1));
+    /* More opaque red */
+    border-radius: 0 0 20px 20px;
+    animation: fall linear infinite;
+    opacity: 0;
+    filter: drop-shadow(0 0 8px var(--rog-red));
+    /* Stronger glow */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+/* Interactive & Speed Enhancements */
+.rog-panel-dark {
+    /* Glassmorphism Update */
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background: rgba(10, 10, 10, 0.65);
+    /* More transparent */
+    border: 1px solid rgba(255, 10, 62, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.3s ease;
+}
+
+.rog-panel-dark:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(255, 10, 62, 0.15),
+        0 0 20px rgba(255, 10, 62, 0.1) inset;
+    /* Inner glow */
+    border-color: rgba(255, 10, 62, 0.6);
+}
+
+/* ChatBot Specific Premium Look */
+.ai-assistant-panel {
+    border: 1px solid rgba(255, 10, 62, 0.4);
+    box-shadow: 0 0 30px rgba(255, 10, 62, 0.1);
+    animation: pulse-border 4s infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        border-color: rgba(255, 10, 62, 0.4);
+        box-shadow: 0 0 30px rgba(255, 10, 62, 0.1);
+    }
+
+    50% {
+        border-color: rgba(255, 10, 62, 0.8);
+        box-shadow: 0 0 50px rgba(255, 10, 62, 0.3);
+    }
+
+    100% {
+        border-color: rgba(255, 10, 62, 0.4);
+        box-shadow: 0 0 30px rgba(255, 10, 62, 0.1);
+    }
+}
+
+/* === MARKETING LAYOUT (MATCHING REFERENCE IMAGE) === */
+
+.rog-marketing-headline {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--rog-red) !important;
+    text-shadow: 0 0 30px rgba(255, 10, 62, 0.4);
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+    font-family: 'Orbitron', 'Inter', sans-serif;
+}
+
+.rog-marketing-sub {
+    font-size: 1.1rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 600px;
+}
+
+.rog-tamil-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #e5e5e5;
+}
+
+.rog-tamil-highlight {
+    color: var(--rog-red);
+}
+
+/* Minimal Stats (Reference Image Style - Premium Glass) */
+.rog-stats-minimal-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.rog-stat-minimal {
+    background: rgba(20, 20, 20, 0.6);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 16px;
+    width: 150px;
+    /* Exact rectangular shape */
+    height: 120px;
+    text-align: center;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+}
+
+.rog-stat-minimal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 10, 62, 0.15);
+    border-color: rgba(255, 10, 62, 0.3);
+}
+
+.rog-stat-minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.rog-stat-minimal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 10, 62, 0.5), transparent);
+    opacity: 0.8;
+}
+
+.rog-stat-val {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 4px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.rog-stat-label-min {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #9ca3af;
+}
+
+/* AI Station (Right Side - Premium Container) */
+.rog-ai-station {
+    position: relative;
+    background: radial-gradient(circle at 50% 30%, #1a080a 0%, #050505 80%);
+    border: 1px solid rgba(255, 10, 62, 0.5);
+    /* Soft Neon Outline */
+    border-radius: 24px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(255, 10, 62, 0.15),
+        inset 0 0 30px rgba(255, 10, 62, 0.1);
+    height: 680px;
+    /* Taller */
+    display: flex;
+    flex-direction: column;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+/* Base Stand for the Station */
+.rog-ai-station-base {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40px;
+    background: var(--rog-red);
+    filter: blur(20px);
+    z-index: -1;
+}
+
+/* Camp Section Text (Bottom Left) */
+.rog-camp-text-section {
+    margin-top: auto;
+}
+
+.rog-camp-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.rog-camp-desc {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    max-width: 500px;
+}
+
+/* Start Request Button */
+.rog-start-btn {
+    background: linear-gradient(180deg, #d30026 0%, #8a0019 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 0, 40, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.rog-start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(255, 0, 40, 0.6);
+}
+
+/* Quick Actions Chips */
+.rog-chip-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none;
+}
+
+.rog-chip-row::-webkit-scrollbar {
+    display: none;
+}
+
+.rog-chip {
+    background: rgba(255, 10, 62, 0.15);
+    border: 1px solid rgba(255, 10, 62, 0.3);
+    color: #ffcccc;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.rog-chip:hover {
+    background: var(--rog-red);
+    color: white;
+}
+
+/* === FULL SCREEN RESPONSIVE LAYOUT === */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+/* Main Container - Full Height Flex Logic */
+.rog-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Navbar fixed height compensation if needed, or just let it overlay */
+.rog-main-content-flex {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* Default to column, inner grid will handle split */
+    width: 100%;
+    height: 100%;
+    padding-top: 80px;
+    /* Space for fixed navbar */
+    box-sizing: border-box;
+}
+
+/* The Grid/Split Layout */
+.rog-split-layout {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-width: none;
+    /* Optional cap for ultra-wide screens */
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+
+    gap: 10px;
+    box-sizing: border-box;
+    align-items: stretch;
+    /* Make both sides equal height */
+}
+
+/* Left Section */
+.rog-left-section {
+    flex: 1.2;
+    /* Takes slightly more space or 60% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    min-width: 0;
+    /* Prevent flex overflow */
+    padding-bottom: 40px;
+    /* Keep padding for text so it doesn't hit bottom edge, only AI station should? */
+}
+
+/* Right Section */
+.rog-right-section {
+    flex: 1;
+    /* Takes remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Align to bottom */
+    min-width: 0;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 120px);
+    /* Prevents expanding and allows scrolling */
+}
+
+/* Responsive Stacking */
+@media (max-width: 1024px) {
+    .rog-split-layout {
+        flex-direction: column;
+        height: auto;
+        /* Allow scrolling */
+        padding-bottom: 40px;
+        /* Add padding back on mobile */
+    }
+
+    .rog-left-section {
+        flex: none;
+        width: 100%;
+        margin-bottom: 40px;
+        align-items: center;
+        /* Center text on mobile */
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    .rog-right-section {
+        flex: none;
+        width: 100%;
+        height: auto;
+        position: static;
+        /* Reset on mobile */
+    }
+
+    .rog-ai-station {
+        height: 600px;
+        /* Fixed height on mobile */
+        border-radius: 24px;
+        /* Round corners on mobile */
+    }
+
+    /* Adjust text alignment for mobile */
+    .rog-marketing-headline {
+        font-size: 3.5rem;
+        /* Smaller on mobile */
+    }
+
+    .rog-stats-minimal-row {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES (data-theme="light")
+   ============================================ */
+
+[data-theme="light"] {
+    --rog-bg-light: #f8fafc;
+    --rog-bg-gradient-start: #ffffff;
+    --rog-bg-gradient-end: #f1f5f9;
+    --rog-panel-white: rgba(255, 255, 255, 0.9);
+    --rog-panel-border: rgba(0, 0, 0, 0.06);
+    --rog-text-dark: #0f172a;
+    --rog-text-light: #ffffff;
+    --rog-text-dim: #64748b;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.08);
+    --rog-border: rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] body {
+    background-color: #f8fafc;
+    background-image:
+        radial-gradient(circle at top right, rgba(255, 10, 62, 0.07), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(60, 182, 227, 0.1), transparent 50%),
+        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+    color: #0f172a;
+}
+
+[data-theme="light"] body::before, [data-theme="light"] body::after {
+    display: none;
+}
+
+[data-theme="light"] .rog-navbar,
+[data-theme="light"] header.rog-navbar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+}
+
+/* Remove the accidental green dashboard background */
+[data-theme="light"] .rog-dashboard-container {
+    background: transparent !important;
+    background-image: none !important;
+}
+
+/* Glassy, beautifully shadowed panels */
+[data-theme="light"] .rog-panel-dark {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0,0,0,0.02);
+    border-radius: 16px;
+}
+
+[data-theme="light"] .rog-input-dark,
+[data-theme="light"] .rog-select-dark {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .rog-input-dark:focus,
+[data-theme="light"] .rog-select-dark:focus {
+    background: #ffffff;
+    border-color: #ff0a3e;
+    box-shadow: 0 0 0 3px rgba(255, 10, 62, 0.15);
+}
+
+/* Vibrant Stat Blocks */
+[data-theme="light"] .rog-stat-block,
+[data-theme="light"] .rog-stat-minimal {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+    border-top: 4px solid var(--rog-red) !important;
+    border-radius: 12px;
+}
+
+[data-theme="light"] .rog-stat-number {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .rog-stat-label {
+    color: #64748b !important;
+    font-weight: 700 !important;
+}
+
+[data-theme="light"] .rog-marketing-headline {
+    color: #ff0a3e !important;
+    text-shadow: 0 8px 24px rgba(255, 10, 62, 0.2) !important;
+}
+[data-theme="light"] .rog-marketing-headline span:last-child {
+    color: #0f172a !important;
+}
+[data-theme="light"] .rog-hero-subtitle span:last-child {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .blood-rain-container {
+    opacity: 0.1;
+}
+
+[data-theme="light"] .drop {
+    background: linear-gradient(to bottom, transparent, rgba(255, 10, 62, 0.4));
+}
+
+[data-theme="light"] .toast {
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+
+[data-theme="light"] .toast-title { color: #0f172a; }
+[data-theme="light"] .toast-message { color: #64748b; }
+
+/* Admin Dashboard Elements Light Mode */
+[data-theme="light"] .rog-inventory-list .rog-inventory-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+}
+
+[data-theme="light"] .rog-inventory-list .rog-inventory-card:hover {
+    background: #fdfdfd;
+    border-color: rgba(255, 10, 62, 0.4);
+    box-shadow: 0 8px 24px rgba(255, 10, 62, 0.12);
+}
+
+[data-theme="light"] .rog-progress-container {
+    background: #e2e8f0;
+}
+[data-theme="light"] .rog-progress-bar {
+    background: linear-gradient(90deg, #ff0a3e, #ff4d6d);
+    box-shadow: 0 0 10px rgba(255, 10, 62, 0.3);
+}
+
+[data-theme="light"] .rog-request-item {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+}
+
+[data-theme="light"] .rog-request-item:hover {
+    border-color: rgba(255, 10, 62, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   DARK MODE TOGGLE BUTTON
+   ============================================ */
+
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.dark-mode-toggle:hover {
+    background: rgba(255, 10, 62, 0.12);
+    border-color: rgba(255, 10, 62, 0.4);
+    color: white;
+}
+
+/* The pill switch track */
+.toggle-track {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.toggle-track.is-dark {
+    background: linear-gradient(135deg, #ff0a3e, #880020);
+    border-color: rgba(255,10,62,0.4);
+    box-shadow: 0 0 8px rgba(255,10,62,0.4);
+}
+
+/* The sliding knob */
+.toggle-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    line-height: 1;
+}
+
+.toggle-track.is-dark .toggle-knob {
+    transform: translateX(16px);
+}
+
+/* Light theme adjustments for the toggle button */
+[data-theme="light"] .dark-mode-toggle {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #555;
+}
+
+[data-theme="light"] .dark-mode-toggle:hover {
+    background: rgba(255, 10, 62, 0.08);
+    border-color: rgba(255, 10, 62, 0.3);
+    color: #ff0a3e;
+}
+
+[data-theme="light"] .toggle-track {
+    background: #ccc;
+    border-color: rgba(0,0,0,0.1);
+}
+
+/* --- Admin / Shared CSS class light mode text fixes --- */
+[data-theme="light"] .rog-hero-title {
+    color: #1a1a2e;
+}
+
+[data-theme="light"] .rog-hero-subtitle {
+    color: #444466;
+}
+
+[data-theme="light"] .rog-hero-subtitle span[style] {
+    color: #ff0a3e !important;
+}
+
+[data-theme="light"] .rog-stat-number {
+    color: #1a1a2e;
+    text-shadow: none;
+}
+
+[data-theme="light"] .rog-stat-label {
+    color: #555577;
+}
+
+[data-theme="light"] .rog-stat-block {
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .rog-request-item {
+    background: rgba(255,255,255,0.8);
+    border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .rog-request-item h3 {
+    color: #1a1a2e;
+}
+
+[data-theme="light"] .rog-blood-type {
+    color: #1a1a2e;
+}
+
+[data-theme="light"] .rog-input-dark::placeholder,
+[data-theme="light"] .rog-select-dark::placeholder {
+    color: #999;
+}
+
+[data-theme="light"] .rog-select-dark option {
+    background: #ffffff;
+    color: #1a1a2e;
+}
+
+[data-theme="light"] .rog-main-content {
+    background: #f5f5f7;
+}
+
