@@ -15,6 +15,7 @@ function Login() {
 
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [toasts, setToasts] = useState([]);
 
     // Toast notification system
@@ -34,6 +35,7 @@ function Login() {
     // Handle form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/auth/login`, {
                 method: 'POST',
@@ -59,6 +61,8 @@ function Login() {
         } catch (error) {
             console.error(error);
             showToast('An error occurred during login', 'error', 'Error');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -200,8 +204,8 @@ function Login() {
                         </div>
 
                         {error && <div className="error-message show" style={{ marginBottom: '10px' }}>{error}</div>}
-                        <button type="submit" className="login-btn btn">
-                            <span className="btn-text">Sign In</span>
+                        <button type="submit" className={`login-btn btn ${isLoading ? 'loading' : ''}`} disabled={isLoading}>
+                            <span className="btn-text">{isLoading ? 'Signing In...' : 'Sign In'}</span>
                             <span className="btn-loader"></span>
                             <span className="btn-glow"></span>
                         </button>
