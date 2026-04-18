@@ -71,7 +71,18 @@ function AdminDashboard() {
             const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/camps`);
             if (!response.ok) throw new Error("API Error");
             const data = await response.json();
-            setCampRequests(data);
+            // Normalize response: support array or object with 'camps' or 'data' fields
+            let camps = [];
+            if (Array.isArray(data)) {
+              camps = data;
+            } else if (Array.isArray(data.camps)) {
+              camps = data.camps;
+            } else if (Array.isArray(data.data)) {
+              camps = data.data;
+            } else {
+              console.warn('Unexpected camp data format', data);
+            }
+            setCampRequests(camps);
         } catch (error) {
             console.error(error);
             // Fallback for demo visualization
